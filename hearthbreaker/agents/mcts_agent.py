@@ -20,13 +20,23 @@ def find_target(t, ts, hero):
 
 def attack_target(minion, target, game):
     m = find_minion(minion, game.current_player.minions)
+    if (m.health<1):
+        m.remove_from_board()
     t = find_target(target, game.other_player.minions, game.other_player.hero)
-    m.attack(t)
+    if (t.health<1):
+        t.remove_from_board()
+    if (m.removed == False and t.removed == False):
+        m.attack(t)
 
 
 def play_move(game, chosen_move):
     cards, attacks = chosen_move
-
+    if (game.current_player.hero.health) < 0:
+        game.current_player.hero.dead = True
+        return
+    if (game.other_player.hero.health) < 0:
+        game.other_player.hero.dead = True
+        return
     if len(cards) > 0:
         for card in cards:
             game.play_card(card)
