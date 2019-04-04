@@ -51,7 +51,7 @@ def get_inner_tree(game):
     attack_sequences = []
     minions_use = get_minions_to_use(game)
     for minion in minions_use:
-        targets = minion.get_targets
+        targets = minion.get_targets()
         for target in targets:
             if minion.health == 0 or target.health==0:
                 print("ERROR - get_inner_tree returns minions with 0 health")
@@ -189,7 +189,7 @@ class MCTSAgent(DoNothingAgent):
         state = GameState(player.game)
         move = uct(rootstate = state, itermax = self.depth, verbose = False)
 
-        print("***AFTER UCT***")
+        print("***AFTER uct***")
         print("Before playing the move:")
         print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
 
@@ -260,7 +260,7 @@ class Node:
         return s
 
 
-def UCT(rootstate, itermax, verbose=False):
+def uct(rootstate, itermax, verbose=False):
     rootnode = Node(state=rootstate)
 
     for i in range(itermax):
@@ -301,7 +301,7 @@ def UCT(rootstate, itermax, verbose=False):
             print("Rollout - current player won") if curr_player_won == 0 else print("Rollout - other player won")
 
         # My Backpropagate
-               while node != None:  # backpropagate from the expanded node and work back to the root node
+        while node != None:  # backpropagate from the expanded node and work back to the root node
             print("==========\nBackpropagation - updating node:", node)
             node.update(curr_player_won)  # state is terminal. update node with result from POV of node.playerJustMoved
             print("Backpropagation - finished updating node:", node, "\n==========")

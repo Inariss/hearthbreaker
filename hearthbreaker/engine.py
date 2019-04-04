@@ -128,9 +128,9 @@ class Game(Bindable):
 
         attacking_minion.player.game.check_delayed()
         attacking_minion.trigger("attack_completed")
-        print("STATS AFTER ATTACK")
-        print("==== ATTACKER", attacking_minion )
-        print("==== TARGET", target)
+        # print("STATS AFTER ATTACK")
+        # print("==== ATTACKER", attacking_minion )
+        # print("==== TARGET", target)
         attacking_minion.attacks_performed += 1
         attacking_minion.stealth = False
         attacking_minion.current_target = None
