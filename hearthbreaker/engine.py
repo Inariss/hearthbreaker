@@ -336,9 +336,9 @@ class Game(Bindable):
     def play_card(self, card):
         if self.game_ended:
             raise GameException("The game has ended")
-        if not card.can_use(self.current_player, self):
-            print("ERROR:",card,"cannot be used")
-            raise GameException("That card cannot be used")
+        # if not card.can_use(self.current_player, self):
+        #     print("ERROR:",card,"cannot be used")
+        #     raise GameException("That card cannot be used")
 
         # print("PLAYER HAND: ", self.current_player.hand)
         # print("PLAYER CARD: ", card)

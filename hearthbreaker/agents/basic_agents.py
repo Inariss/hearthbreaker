@@ -119,37 +119,71 @@ class RandomAgent(DoNothingAgent):
         #
         # print("<-- info <--")
 
+    # def do_turn(self, player):
+    #     # self.print_info_about_turn(player)
+    #     while True:
+    #         attack_minions = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
+    #         if player.hero.can_attack():
+    #             attack_minions.append(player.hero)
+    #         playable_cards = [card for card in filter(lambda card: card.can_use(player, player.game) and card.mana<=player.mana, player.hand)]
+    #
+    #         # print(">>> PLAYING CARDS FROM HAND >>>")
+    #         # # possible_cards_to_use = [card for card in player.hand if (card.can_use(player, player.game))]
+    #         # print(">>> Possible cards to use: ", playable_cards)
+    #
+    #
+    #         if player.hero.power.can_use():
+    #             possible_actions = len(attack_minions) + len(playable_cards) + 1
+    #         else:
+    #             possible_actions = len(attack_minions) + len(playable_cards)
+    #         if possible_actions > 0:
+    #             action = random.randint(0, possible_actions - 1)
+    #             if player.hero.power.can_use() and action == possible_actions - 1:
+    #                 player.hero.power.use()
+    #             elif action < len(attack_minions):
+    #                 attack_minions[action].attack()
+    #             else:
+    #                 card_to_be_played = playable_cards[action - len(attack_minions)]
+    #                 player.game.play_card(card_to_be_played)
+    #                 # print(">>> Using card from hand:\n>>>    ", card_to_be_played)
+    #                 # print("<<< PLAYING CARDS FROM HAND <<<")
+    #         else:
+    #             # print("<<< PLAYING CARDS FROM HAND <<<")
+    #             return
+
     def do_turn(self, player):
-        # self.print_info_about_turn(player)
-        while True:
-            attack_minions = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
-            if player.hero.can_attack():
-                attack_minions.append(player.hero)
-            playable_cards = [card for card in filter(lambda card: card.can_use(player, player.game) and card.mana<=player.mana, player.hand)]
+        player.game.remove_dead_minions()
+        attacks_performed = []
+        cards_played = []
+        self.print_info_about_turn(player)
 
-            # print(">>> PLAYING CARDS FROM HAND >>>")
-            # # possible_cards_to_use = [card for card in player.hand if (card.can_use(player, player.game))]
-            # print(">>> Possible cards to use: ", playable_cards)
+        ##### playing cards from hand #####
+        all_cards_which_can_be_used = [card for card in
+                               filter(lambda card: card.can_use(player, player.game) and card.mana <= player.mana,
+                                      player.hand)]
+        for card in all_cards_which_can_be_used:
+            if random.randint(0, 1) == 1 and len(player.minions) < 7:
+                player.game.play_card(card)
+                cards_played.append(card)
+        print("Cards played:", cards_played)
 
+        ##### attacking with minions #####
+        all_minions_who_can_attack = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
+        if player.hero.can_attack():
+            all_minions_who_can_attack.append(player.hero)
+        for attacker in all_minions_who_can_attack:
+            if random.randint(0, 1) == 1:
+                attacks_performed.append(attacker)
+        print("Attacks:", attacks_performed)
+        for attacker in attacks_performed:
+            attacker.attack()
 
-            if player.hero.power.can_use():
-                possible_actions = len(attack_minions) + len(playable_cards) + 1
-            else:
-                possible_actions = len(attack_minions) + len(playable_cards)
-            if possible_actions > 0:
-                action = random.randint(0, possible_actions - 1)
-                if player.hero.power.can_use() and action == possible_actions - 1:
-                    player.hero.power.use()
-                elif action < len(attack_minions):
-                    attack_minions[action].attack()
-                else:
-                    card_to_be_played = playable_cards[action - len(attack_minions)]
-                    player.game.play_card(card_to_be_played)
-                    # print(">>> Using card from hand:\n>>>    ", card_to_be_played)
-                    # print("<<< PLAYING CARDS FROM HAND <<<")
-            else:
-                # print("<<< PLAYING CARDS FROM HAND <<<")
-                return
+        ##### remove dead minions after attacks are performed #####
+        player.game.remove_dead_minions()
+
+        ##### attacking with hero #####
+        # if player.hero.power.can_use() and random.randint(0, 1) == 1:
+        #     player.hero.power.use()
 
     def choose_target(self, targets):
         # print("--- CHOOSING TARGET ---\n--- Choosing target from list:\n---    ", end='')
@@ -195,34 +229,39 @@ class OpponentAgent(DoNothingAgent):
         print("<-- info <--")
 
     def do_turn(self, player):
-        attack = []
-        play = []
+        player.game.remove_dead_minions()
+        attacks_performed = []
+        cards_played = []
         self.print_info_about_turn(player)
-        while True:
-            attack_minions = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
-            if player.hero.can_attack():
-                attack_minions.append(player.hero)
 
-            playable_cards = [card for card in filter(lambda card: card.can_use(player, player.game) and card.mana<=player.mana, player.hand)]
-            if player.hero.power.can_use():
-                possible_actions = len(attack_minions) + len(playable_cards) + 1
-            else:
-                possible_actions = len(attack_minions) + len(playable_cards)
-            if possible_actions > 0:
-                action = random.randint(0, possible_actions - 1)
-                if player.hero.power.can_use() and action == possible_actions - 1:
-                    player.hero.power.use()
-                elif action < len(attack_minions):
-                    attack_minions[action].attack()
+        ##### playing cards from hand #####
+        all_cards_which_can_be_used = [card for card in
+                               filter(lambda card: card.can_use(player, player.game) and card.mana <= player.mana,
+                                      player.hand)]
+        for card in all_cards_which_can_be_used:
+            if random.randint(0, 1) == 1 and len(player.minions) < 7:
+                player.game.play_card(card)
+                cards_played.append(card)
+        print("Cards played:", cards_played)
 
-                else:
-                    card_to_be_played = playable_cards[action - len(attack_minions)]
-                    player.game.play_card(card_to_be_played)
-                    play.append(card_to_be_played)
+        ##### attacking with minions #####
+        all_minions_who_can_attack = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
+        if player.hero.can_attack():
+            all_minions_who_can_attack.append(player.hero)
+        for attacker in all_minions_who_can_attack:
+            if random.randint(0, 1) == 1:
+                attacks_performed.append(attacker)
+        print("Attacks:", attacks_performed)
+        for attacker in attacks_performed:
+            attacker.attack()
 
-            else:
-                print("Opponent agent turn:\n\tcards:",play, "\n\tattacks:", attack)
-                return
+        ##### remove dead minions after attacks are performed #####
+        player.game.remove_dead_minions()
+
+        ##### attacking with hero #####
+        # if player.hero.power.can_use() and random.randint(0, 1) == 1:
+        #     player.hero.power.use()
+
 
     def choose_target(self, targets):
         # print("--- CHOOSING TARGET ---\n--- Choosing target from list:\n---    ", end='')

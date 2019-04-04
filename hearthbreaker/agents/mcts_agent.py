@@ -34,10 +34,10 @@ def play_move(game, chosen_move):
     game.remove_dead_minions()
 
     cards, attacks = chosen_move
-    if (game.current_player.hero.health) < 0:
+    if (game.current_player.hero.health) <= 0:
         game.current_player.hero.dead = True
         return
-    if (game.other_player.hero.health) < 0:
+    if (game.other_player.hero.health) <= 0:
         game.other_player.hero.dead = True
         return
     if len(cards) > 0:
@@ -195,11 +195,11 @@ class MCTSAgent(DoNothingAgent):
         print("<-- info <--")
 
     def do_turn(self, player):
-        print('---\nTurn of', player)
+        self.print_info_about_turn(player)
         state = GameState(player.game)
         move = uct(rootstate = state, itermax = self.depth, verbose = False)
 
-        print("***AFTER uct***")
+        print("*** AFTER UCT ***")
         print("Before playing the move:")
         print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
 
