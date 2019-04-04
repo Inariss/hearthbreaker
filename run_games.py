@@ -63,7 +63,7 @@ def do_stuff():
     deck1 = Deck(cards, Jaina())
     deck2 = Deck(cards, Malfurion())
     game = Game([deck1, deck2], [MCTSAgent(2), OpponentAgent()])
-    # game = Game([deck1, deck2], [AggressiveAgent(), RandomAgent()])
+    # game = Game([deck1, deck2], [AggressiveAgent(), ControllingAgent()])
     # game = Game([deck1, deck2], [ControllingAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [TalkativeAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [RandomAgent(), RandomAgent()])

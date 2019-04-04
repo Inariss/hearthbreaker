@@ -448,6 +448,8 @@ class Character(Bindable, GameObject, metaclass=abc.ABCMeta):
         target_attack = target.calculate_attack()
         if target_attack > 0:
             self.damage(target_attack, target)
+        if self.health <= 0:
+            self.die(target)
         target.damage(my_attack, self)
         self.player.game.check_delayed()
         self.trigger("attack_completed")
@@ -480,10 +482,6 @@ class Character(Bindable, GameObject, metaclass=abc.ABCMeta):
                 found_taunt = True
             if enemy.can_be_attacked():
                 targets.append(enemy)
-            if isinstance(enemy, Hero):
-                print("=\n==\n===\n====\n===== ERROR\n====\n===\n==\n=")
-
-
         if found_taunt:
             targets = [target for target in targets if target.taunt]
         else:
@@ -613,7 +611,7 @@ class Character(Bindable, GameObject, metaclass=abc.ABCMeta):
             self.trigger("damaged", amount, attacker)
             self.player.trigger("character_damaged", self, attacker, amount)
             if self.health <= 0:
-                self.die(self)
+                self.die(attacker)
             self.trigger("health_changed")
             if not self.enraged and self.health != self.calculate_max_health():
                 self.enraged = True
