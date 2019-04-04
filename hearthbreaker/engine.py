@@ -7,7 +7,7 @@ import hearthbreaker.tags
 from hearthbreaker.tags.base import Effect, AuraUntil
 import hearthbreaker.targeting
 
-from hearthbreaker.agents.basic_agents import RandomAgent
+from hearthbreaker.agents.basic_agents import RandomAgent, OpponentAgent
 from hearthbreaker.agents.test_agent import TalkativeAgent
 from hearthbreaker.agents.aggressive_agent import AggressiveAgent
 from hearthbreaker.agents.controlling_agent import ControllingAgent
@@ -80,41 +80,57 @@ class Game(Bindable):
         self._turns_passed = 0
         self.selected_card = None
 
-    # Function added for MCTS
+    def remove_dead_minions(self):
+        self.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
+        self.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
 
+    # Function added for MCTS
     def attack_target(self, minion, target_to_attack):
-        
-        filtered_minions_attackers = list(filter(lambda x: x.index==minion.index, self.current_player.minions)) 
-        print("FILTERED MINIONS",filtered_minions_attackers)
+
+        # choose a minion who will perform the attack: attacking_minion
+        filtered_minions_attackers = list(filter(lambda x: x==minion, self.current_player.minions))
+        # print("FILTERED MINIONS",filtered_minions_attackers)
         if len(filtered_minions_attackers)<1:
             raise Exception('No minions found in game copy: {}'.format(filtered_minions_attackers))
         attacking_minion = filtered_minions_attackers[0]
+
+        # choose a card or hero who will be attacked: target_to_attack
         if target_to_attack.is_hero():
             target_to_attack = self.other_player.hero
         else:
-            filtered_minions_targets = list(filter(lambda x: x.index==target_to_attack.index, self.other_player.minions))
+            filtered_minions_targets = list(filter(lambda x: x==target_to_attack, self.other_player.minions))
             if len(filtered_minions_targets)<1:
                 raise Exception('No minion targets found in game copy: {}'.format(filtered_minions_targets))
             target_to_attack = filtered_minions_targets[0]
-        
+
+        # set a target for attacking_minion
         attacking_minion.current_target = target_to_attack
 
+        #
         attacking_minion.player.trigger("character_attack", attacking_minion, attacking_minion.current_target)
         attacking_minion.trigger("attack", attacking_minion.current_target)
         if attacking_minion.removed or attacking_minion.dead:  # removed won't be set yet if the Character died during this attack
             return
-        
         target = attacking_minion.current_target
+
         my_attack = attacking_minion.calculate_attack()  # In case the damage causes my attack to grow
+
         target_attack = target.calculate_attack()
         if target_attack > 0:
             attacking_minion.damage(target_attack, target)
+
+        if attacking_minion.health <= 0:
+            attacking_minion.die(target_to_attack)
+
         target.damage(my_attack, attacking_minion)
+        if target.health <= 0:
+            target.die(attacking_minion)
+
         attacking_minion.player.game.check_delayed()
         attacking_minion.trigger("attack_completed")
-        print("STATS AFTER ATTACK")
-        print("==== ATTACKER", attacking_minion )
-        print("==== TARGET", target)
+        # print("STATS AFTER ATTACK")
+        # print("==== ATTACKER", attacking_minion )
+        # print("==== TARGET", target)
         attacking_minion.attacks_performed += 1
         attacking_minion.stealth = False
         attacking_minion.current_target = None
@@ -189,6 +205,7 @@ class Game(Bindable):
             # if self._turns_passed==5:
             #     game_copy = self.copy()
             self.play_single_turn()
+
             
 
             # # Proba zmiany rodzaju agenta po 10 rundzie - dziala ok
@@ -275,6 +292,9 @@ class Game(Bindable):
             minion.used_windfury = False
             minion.attacks_performed = 0
 
+        # self.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
+        # self.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
+
         for aura in copy.copy(self.current_player.object_auras):
             if aura.expires:
                 self.current_player.object_auras.remove(aura)
@@ -317,12 +337,11 @@ class Game(Bindable):
         if self.game_ended:
             raise GameException("The game has ended")
         if not card.can_use(self.current_player, self):
+            print("ERROR:",card,"cannot be used")
             raise GameException("That card cannot be used")
 
         # print("PLAYER HAND: ", self.current_player.hand)
         # print("PLAYER CARD: ", card)
-        if card not in self.current_player.hand:
-            print("\n@@@@@ ERROR IS COMING @@@@@\n@@ CARD IS NOT IN PLAYER.HAND@@\n")
 
         card_index = self.current_player.hand.index(card)
 

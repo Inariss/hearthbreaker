@@ -315,6 +315,12 @@ class RiverCrocolisk(MinionCard):
     def create_minion(self, player):
         return Minion(2, 3)
 
+class MudAlligator(MinionCard):
+    def __init__(self):
+        super().__init__("Mud Alligator", 2, CHARACTER_CLASS.ALL, CARD_RARITY.FREE, minion_type=MINION_TYPE.BEAST)
+
+    def create_minion(self, player):
+        return Minion(2, 3)
 
 class SenjinShieldmasta(MinionCard):
     def __init__(self):
@@ -454,6 +460,12 @@ class ChillwindYeti(MinionCard):
     def create_minion(self, player):
         return Minion(4, 5)
 
+class HotwindJinn(MinionCard):
+    def __init__(self):
+        super().__init__("Hotwind Jinn", 4, CHARACTER_CLASS.ALL, CARD_RARITY.COMMON)
+
+    def create_minion(self, player):
+        return Minion(4, 5)
 
 class CoreHound(MinionCard):
     def __init__(self):
