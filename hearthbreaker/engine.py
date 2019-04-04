@@ -272,6 +272,13 @@ class Game(Bindable):
         self.current_player.trigger("turn_started", self.current_player)
         self._has_turn_ended = False
 
+        if (self.current_player.hero.health) <= 0:
+            self.current_player.hero.dead = True
+            return
+        if (self.other_player.hero.health) <= 0:
+            self.other_player.hero.dead = True
+            return
+
     def game_over(self):
         self.game_ended = True
 
@@ -336,9 +343,9 @@ class Game(Bindable):
     def play_card(self, card):
         if self.game_ended:
             raise GameException("The game has ended")
-        if not card.can_use(self.current_player, self):
-            print("ERROR:",card,"cannot be used")
-            raise GameException("That card cannot be used")
+        # if not card.can_use(self.current_player, self):
+        #     print("ERROR:",card,"cannot be used")
+        #     raise GameException("That card cannot be used")
 
         # print("PLAYER HAND: ", self.current_player.hand)
         # print("PLAYER CARD: ", card)
@@ -518,6 +525,7 @@ class Player(Bindable):
             self.fatigue += 1
             self.hero.trigger("fatigue_damage", self.fatigue)
             self.hero.damage(self.fatigue, None)
+            print(self, "lost 1 point beacuse of empty deck")
             self.hero.activate_delayed()
 
     def can_draw(self):
