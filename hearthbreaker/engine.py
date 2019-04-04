@@ -80,6 +80,10 @@ class Game(Bindable):
         self._turns_passed = 0
         self.selected_card = None
 
+    def remove_dead_minions(self):
+        self.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
+        self.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
+
     def attack_target(self, minion, target_to_attack):
 
         # choose a minion who will perform the attack: attacking_minion
@@ -112,10 +116,13 @@ class Game(Bindable):
         target_attack = target.calculate_attack()
         if target_attack > 0:
             attacking_minion.damage(target_attack, target)
-        target.damage(my_attack, attacking_minion)
 
         if attacking_minion.health <= 0:
             attacking_minion.die(target_to_attack)
+
+        target.damage(my_attack, attacking_minion)
+        if target.health <= 0:
+            target.die(attacking_minion)
 
         attacking_minion.player.game.check_delayed()
         attacking_minion.trigger("attack_completed")
@@ -280,6 +287,9 @@ class Game(Bindable):
             minion.used_windfury = False
             minion.attacks_performed = 0
 
+        # self.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
+        # self.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
+
         for aura in copy.copy(self.current_player.object_auras):
             if aura.expires:
                 self.current_player.object_auras.remove(aura)
@@ -322,12 +332,11 @@ class Game(Bindable):
         if self.game_ended:
             raise GameException("The game has ended")
         if not card.can_use(self.current_player, self):
+            print("ERROR:",card,"cannot be used")
             raise GameException("That card cannot be used")
 
         # print("PLAYER HAND: ", self.current_player.hand)
         # print("PLAYER CARD: ", card)
-        if card not in self.current_player.hand:
-            print("\n@@@@@ ERROR IS COMING @@@@@\n@@ CARD IS NOT IN PLAYER.HAND@@\n")
 
         card_index = self.current_player.hand.index(card)
 

@@ -62,12 +62,12 @@ def do_stuff():
     cards = load_deck("mage3.hsdeck")
     deck1 = Deck(cards, Jaina())
     deck2 = Deck(cards, Malfurion())
-    game = Game([deck1, deck2], [MCTSAgent(2), OpponentAgent()])
+    game = Game([deck1, deck2], [MCTSAgent(10), OpponentAgent()])
     # game = Game([deck1, deck2], [AggressiveAgent(), ControllingAgent()])
     # game = Game([deck1, deck2], [ControllingAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [TalkativeAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [RandomAgent(), RandomAgent()])
-    print(timeit.timeit(play_game, 'gc.enable()', number=1))
+    print(timeit.timeit(play_game, 'gc.enable()', number=3))
 
 
 if __name__ == "__main__":

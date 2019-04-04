@@ -7,6 +7,9 @@ import math
 from hearthbreaker.agents.basic_agents import RandomAgent, DoNothingAgent, OpponentAgent
 
 def play_move(game, chosen_move):
+    # remove dead minions from table
+    game.remove_dead_minions()
+
     cards, attacks = chosen_move
 
     if len(cards) > 0:
@@ -15,14 +18,14 @@ def play_move(game, chosen_move):
     if len(attacks) > 0:
         for (minion, target) in attacks:
             game.attack_target(minion, target)
-
+    game.remove_dead_minions()
     game._end_turn()
 
 
 def get_minions_to_use(game):
     minions_to_use = []
     for minion in game.current_player.minions:
-        if minion.can_attack():
+        if minion.can_attack() and minion.health>0:
             minions_to_use.append(minion)
     return minions_to_use
 
@@ -30,8 +33,13 @@ def get_inner_tree(game):
     attack_sequences = []
     minions_use = get_minions_to_use(game)
     for minion in minions_use:
+        # if minion.health==0:
+        #     print("ERROR")
         targets = minion.get_targets()
+        # targets = get_targets_to_attack()
         for target in targets:
+            if minion.health == 0 or target.health==0:
+                print("ERROR - get_inner_tree")
             attack = (minion, target)
             attack_sequences.append([attack]) 
             game_copy = game.copy()
@@ -74,6 +82,11 @@ class GameState:
             return []
         cards = player.hand
 
+        # remove dead minions from table
+        self.game.remove_dead_minions()
+        # self.game.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
+        # self.game.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
+
         print("\nGET MOVES ->\n\tcurrent player hand:", player.hand, "\n\tcurrent player table:", player.minions)
         print("\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
         print("GET MOVES <-\n")
@@ -100,6 +113,10 @@ class GameState:
         seq = map(lambda cc: list(map(lambda aseq: (cc,aseq), attack_sequences)), cards_combinations)
         # [[(), ()],[(), ()]] => [(), (), (), ()]
         all_possible_moves = functools.reduce(operator.add, seq, [])
+
+        # player can have up to 7 cards on the table
+        all_possible_moves = [move for move in all_possible_moves if len(move[0])+len(player.minions)<=7]
+
 
         ##### printing informations
         # print("---\n", player, "'s mana:", player.mana)
@@ -255,6 +272,7 @@ def uct(rootstate, itermax, verbose=False):
 
             while not game_copy.current_player.hero.dead and not game_copy.other_player.hero.dead:
                 game_copy._start_turn()
+                game_copy.remove_dead_minions()
                 game_copy.current_player.agent.do_turn(game_copy.current_player)
                 game_copy._end_turn()
             curr_player_won = 0 if game_copy.current_player.hero.dead else 1
@@ -271,6 +289,9 @@ def uct(rootstate, itermax, verbose=False):
     if (verbose): print("Tree info:",rootnode.tree_to_string(0))
     else: print("Children of tree info:",rootnode.children_to_string())
 
-    ret = sorted(rootnode.childNodes, key=lambda c: c.wins*1.5+c.visits)[-1].move  # return the move that was most visited
-    return ret
+    ret = sorted(rootnode.childNodes, key=lambda c: c.wins*1.5+c.visits)
+    if ret:
+        return ret[-1].move
+    else:
+        print(ret,"is empty\ntree:",rootnode.tree_to_string(0))
     # return sorted(rootnode.childNodes, key=lambda c: c.visits)[-1].move  # return the move that was most visited

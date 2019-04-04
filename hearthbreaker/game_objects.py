@@ -424,14 +424,14 @@ class Character(Bindable, GameObject, metaclass=abc.ABCMeta):
         for enemy in self.player.game.other_player.minions:
             if enemy.taunt and enemy.can_be_attacked():
                 found_taunt = True
-            if enemy.can_be_attacked():
+            if enemy.can_be_attacked() and enemy.health>0:
                 targets.append(enemy)
             if isinstance(enemy, Hero):
                 print("=\n==\n===\n====\n===== ERROR\n====\n===\n==\n=")
         
         if found_taunt:
             targets = [target for target in targets if target.taunt]
-        else:
+        elif self.player.game.other_player.hero.health>0:
             targets.append(self.player.game.other_player.hero)
         
         return targets
@@ -450,7 +450,11 @@ class Character(Bindable, GameObject, metaclass=abc.ABCMeta):
             self.damage(target_attack, target)
         if self.health <= 0:
             self.die(target)
+
         target.damage(my_attack, self)
+        if target.health <= 0:
+            target.die(self)
+
         self.player.game.check_delayed()
         self.trigger("attack_completed")
         self.attacks_performed += 1
