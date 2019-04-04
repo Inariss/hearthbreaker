@@ -1,5 +1,5 @@
 import json
-from hearthbreaker.agents.basic_agents import RandomAgent, DoNothingAgent
+from hearthbreaker.agents.basic_agents import RandomAgent, DoNothingAgent, OpponentAgent
 from hearthbreaker.agents.test_agent import TalkativeAgent
 from hearthbreaker.agents.aggressive_agent import AggressiveAgent
 from hearthbreaker.agents.controlling_agent import ControllingAgent
@@ -51,8 +51,8 @@ def do_stuff():
             print("# " * 61, "\n")
 
         except Exception as e:
-            print(json.dumps(new_game.__to_json__(), default=lambda o: o.__to_json__(), indent=1))
-            print(new_game._all_cards_played)
+            # print(json.dumps(new_game.__to_json__(), default=lambda o: o.__to_json__(), indent=1))
+            # print(new_game._all_cards_played)
             raise e
 
         del new_game
@@ -69,7 +69,7 @@ def do_stuff():
     # game = Game([deck1, deck2], [ControllingAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [TalkativeAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [RandomAgent(), RandomAgent()])
-    print(timeit.timeit(play_game, 'gc.enable()', number=1))
+    print(timeit.timeit(play_game, 'gc.enable()', number=3))
 
 
 if __name__ == "__main__":

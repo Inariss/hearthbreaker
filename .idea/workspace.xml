@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="04d26fac-3d7e-46f4-bab5-1d9fd2a59775" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/agents/__init__.py" afterPath="$PROJECT_DIR$/hearthbreaker/agents/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py" afterPath="$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py" />
       <change beforePath="$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py" afterPath="$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/cards/minions/__init__.py" afterPath="$PROJECT_DIR$/hearthbreaker/cards/minions/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py" afterPath="$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/engine.py" afterPath="$PROJECT_DIR$/hearthbreaker/engine.py" />
+      <change beforePath="$PROJECT_DIR$/hearthbreaker/game_objects.py" afterPath="$PROJECT_DIR$/hearthbreaker/game_objects.py" />
+      <change beforePath="$PROJECT_DIR$/mage3.hsdeck" afterPath="$PROJECT_DIR$/mage3.hsdeck" />
+      <change beforePath="$PROJECT_DIR$/run_games.py" afterPath="$PROJECT_DIR$/run_games.py" />
+      <change beforePath="$PROJECT_DIR$/run_mcts.py" afterPath="$PROJECT_DIR$/run_mcts.py" />
+      <change beforePath="$PROJECT_DIR$/tests/agent_tests.py" afterPath="$PROJECT_DIR$/tests/agent_tests.py" />
+      <change beforePath="$PROJECT_DIR$/tests/replay_tests.py" afterPath="$PROJECT_DIR$/tests/replay_tests.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +27,7 @@
     <SUITE FILE_PATH="coverage/hearthbreaker$UCT.coverage" NAME="UCT Coverage Results" MODIFIED="1553779077289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Desktop" />
     <SUITE FILE_PATH="coverage/hearthbreaker_nasze$run_mcts.coverage" NAME="run_mcts Coverage Results" MODIFIED="1553608358021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hearthbreaker$run_mcts.coverage" NAME="run_mcts Coverage Results" MODIFIED="1553636617387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hearthbreaker$run_games.coverage" NAME="run_games Coverage Results" MODIFIED="1554285234080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hearthbreaker$run_games.coverage" NAME="run_games Coverage Results" MODIFIED="1554402400196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hearthbreaker_nasze$run_games.coverage" NAME="run_games Coverage Results" MODIFIED="1553265972973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -24,30 +35,52 @@
       <file leaf-file-name="run_games.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_games.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="64" column="59" lean-forward="false" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
+            <state relative-caret-position="471">
+              <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1554404003431" expanded="true" signature="2213:2419" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files/Python37/Lib/json/__init__.py">
+      <file leaf-file-name="aggressive_agent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/aggressive_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5640">
-              <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+            <state relative-caret-position="173">
+              <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="encoder.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files/Python37/Lib/json/encoder.py">
+      <file leaf-file-name="mcts_agent.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="441" column="0" lean-forward="false" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
+            <state relative-caret-position="157">
+              <caret line="82" column="76" lean-forward="false" selection-start-line="82" selection-start-column="76" selection-end-line="82" selection-end-column="76" />
+              <folding>
+                <marker date="1554403971413" expanded="false" signature="0:46" ph="import ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hearthbreaker/tags/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="250" column="19" lean-forward="false" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_objects.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hearthbreaker/game_objects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="427" column="30" lean-forward="false" selection-start-line="427" selection-start-column="24" selection-end-line="427" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -56,8 +89,8 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3744">
-              <caret line="171" column="43" lean-forward="false" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+            <state relative-caret-position="123">
+              <caret line="115" column="11" lean-forward="false" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
               <folding>
                 <element signature="e#4481#4690#0" expanded="false" />
                 <element signature="e#7032#7043#0" expanded="false" />
@@ -71,62 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mcts_agent.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#60#0" expanded="true" />
-                <marker date="1554285925341" expanded="true" signature="264:516" ph="..." />
-                <marker date="1554285925341" expanded="true" signature="3663:3984" ph="..." />
-                <marker date="1554285925341" expanded="true" signature="7663:10157" ph="..." />
-                <marker date="1554285925341" expanded="true" signature="7939:8214" ph="..." />
-                <marker date="1554285925341" expanded="true" signature="8610:8632" ph="..." />
-                <marker date="1554285925341" expanded="true" signature="9505:9533" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="selector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hearthbreaker/tags/selector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2184">
-              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game_objects.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hearthbreaker/game_objects.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="567" column="0" lean-forward="false" selection-start-line="567" selection-start-column="0" selection-end-line="567" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic_agents.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3720">
-              <caret line="155" column="39" lean-forward="false" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <marker date="1554285549449" expanded="true" signature="3297:4911" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="engine.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hearthbreaker/engine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="90" column="13" lean-forward="false" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+            <state relative-caret-position="125">
+              <caret line="82" column="27" lean-forward="false" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -134,11 +116,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="replay.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hearthbreaker/replay.py">
+      <file leaf-file-name="run_mcts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_mcts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11376">
-              <caret line="485" column="11" lean-forward="false" selection-start-line="485" selection-start-column="11" selection-end-line="485" selection-end-column="11" />
+            <state relative-caret-position="144">
+              <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="paladin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/spells/paladin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="193" column="16" lean-forward="false" selection-start-line="193" selection-start-column="16" selection-end-line="193" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="copy.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Python37/Lib/copy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,36 +157,34 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>boulderfist</find>
-      <find>print</find>
-      <find>GetMoves</find>
-      <find>do_mov</find>
-      <find>GetResult</find>
-      <find>Backpropagation</find>
-      <find>Voodoo Doctor</find>
-      <find>do_move</find>
-      <find>x.index</find>
-      <find>repr__</find>
-      <find>error is</find>
-      <find>Card(</find>
-      <find>.can_use(</find>
-      <find>get_re</find>
-      <find>class Minion(</find>
-      <find>class Card(</find>
-      <find>current_player</find>
-      <find>copy(</find>
-      <find>RandomAgent(</find>
-      <find>PLAYER HAND</find>
-      <find>M:</find>
-      <find>playerJ</find>
-      <find>playerJust</find>
-      <find>get_</find>
-      <find>START A TURN OF RANDOM AGENT</find>
-      <find>uct(</find>
-      <find>TURN OF</find>
+      <find>*****</find>
+      <find>AFTER UCT</find>
+      <find>GET MOVES</find>
+      <find>(0 health</find>
+      <find>get_moves(</find>
+      <find>*********</find>
+      <find>x for x</find>
+      <find>oppone</find>
+      <find>(0 h</find>
+      <find>x for</find>
+      <find>minion for mi</find>
+      <find>minion for minion</find>
+      <find>end</find>
+      <find>minion for min</find>
+      <find>minion for</find>
+      <find>GET MOVES -&gt;</find>
+      <find>get_moves</find>
+      <find>untriedMoves</find>
+      <find>tree in</find>
+      <find>attack_target</find>
+      <find>Tur</find>
+      <find>(0 hea</find>
+      <find>(0 he</find>
+      <find>do_turn</find>
+      <find>remove_dead_minions</find>
       <find>do_turn(</find>
-      <find>play_move(game</find>
-      <find>play_m</find>
+      <find>(0 heal</find>
+      <find>health 0</find>
     </findStrings>
     <dirStrings>
       <dir>D:\studia\___cos\hearthbreaker</dir>
@@ -197,7 +197,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/hearthbreaker/agents/trade/controlling_agent.py" />
-        <option value="$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/tags/selector.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/agents/trade_agent.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/cards/spells/__init__.py" />
@@ -207,11 +206,14 @@
         <option value="$PROJECT_DIR$/hearthbreaker/cards/heroes.py" />
         <option value="$PROJECT_DIR$/run_mcts.py" />
         <option value="$USER_HOME$/Desktop/UCT.py" />
-        <option value="$PROJECT_DIR$/hearthbreaker/engine.py" />
-        <option value="$PROJECT_DIR$/hearthbreaker/game_objects.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/cards/base.py" />
+        <option value="$PROJECT_DIR$/tests/agent_tests.py" />
+        <option value="$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py" />
+        <option value="$PROJECT_DIR$/hearthbreaker/cards/minions/__init__.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py" />
+        <option value="$PROJECT_DIR$/hearthbreaker/game_objects.py" />
         <option value="$PROJECT_DIR$/run_games.py" />
+        <option value="$PROJECT_DIR$/hearthbreaker/engine.py" />
         <option value="$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py" />
       </list>
     </option>
@@ -222,9 +224,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1044" />
+    <option name="width" value="1587" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -275,7 +277,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="project.scopes" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hearthbreaker_original" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../__IMAD/IMAD_lab/lab_1" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -386,22 +388,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1044" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33072627" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36906078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35911602" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23976608" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.128125" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4077348" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4287293" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -476,34 +478,29 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/hearthbreaker/engine.py</url>
-          <line>318</line>
-          <option name="timeStamp" value="52" />
+          <url>file://$PROJECT_DIR$/hearthbreaker/game_objects.py</url>
+          <line>439</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/hearthbreaker/engine.py</url>
-          <line>91</line>
-          <option name="timeStamp" value="55" />
+          <url>file://$PROJECT_DIR$/hearthbreaker/agents/aggressive_agent.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py</url>
-          <line>211</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/hearthbreaker/cards/spells/warrior.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py</url>
-          <line>146</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py</url>
-          <line>145</line>
-          <option name="timeStamp" value="60" />
+          <url>file://$PROJECT_DIR$/hearthbreaker/agents/controlling_agent.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py</url>
-          <line>115</line>
-          <option name="timeStamp" value="61" />
+          <line>41</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -513,50 +510,17 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="92" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="self.events" />
         <watch expression="__py_debug_temp_var_569949170" />
+        <watch expression="minion.dead" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Program Files/Python37/Lib/abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3312">
-          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/card_tests/neutral_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12072">
-          <caret line="503" column="59" lean-forward="true" selection-start-line="503" selection-start-column="59" selection-end-line="503" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_games.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="55" column="35" lean-forward="false" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/engine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8256">
-          <caret line="351" column="29" lean-forward="false" selection-start-line="351" selection-start-column="29" selection-end-line="361" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/controlling_agent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
@@ -630,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/minions/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="396" column="0" lean-forward="false" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -655,14 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/aggressive_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="70" column="22" lean-forward="false" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -702,16 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_mcts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
@@ -726,32 +665,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/controlling_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="84" column="44" lean-forward="false" selection-start-line="74" selection-start-column="8" selection-end-line="84" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/2026636727/itertools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="137" column="8" lean-forward="false" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/agent_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="250" column="0" lean-forward="false" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -770,45 +687,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/tags/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="532" column="0" lean-forward="false" selection-start-line="532" selection-start-column="0" selection-end-line="532" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/2026636727/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="3635" column="0" lean-forward="true" selection-start-line="3635" selection-start-column="0" selection-end-line="3635" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python37/Lib/copyreg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -824,14 +706,132 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2184">
           <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5640">
+          <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/json/encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1471">
+          <caret line="441" column="0" lean-forward="false" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/agent_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="55" lean-forward="true" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/minions/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/agents/trade/attack_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="96" lean-forward="false" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/minions/neutral.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="260" column="0" lean-forward="true" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/2026636727/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="893">
+          <caret line="5284" column="53" lean-forward="false" selection-start-line="5284" selection-start-column="53" selection-end-line="5284" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/proxies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/abc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/powers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/controlling_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="215" column="46" lean-forward="false" selection-start-line="215" selection-start-column="46" selection-end-line="215" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1277">
+          <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/copy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/aggressive_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/tags/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="250" column="19" lean-forward="false" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3744">
-          <caret line="171" column="43" lean-forward="false" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+        <state relative-caret-position="123">
+          <caret line="115" column="11" lean-forward="false" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
           <folding>
             <element signature="e#4481#4690#0" expanded="false" />
             <element signature="e#7032#7043#0" expanded="false" />
@@ -844,73 +844,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/basic_agents.py">
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/cards/spells/paladin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="155" column="39" lean-forward="false" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1554285549449" expanded="true" signature="3297:4911" ph="..." />
-          </folding>
+        <state relative-caret-position="242">
+          <caret line="193" column="16" lean-forward="false" selection-start-line="193" selection-start-column="16" selection-end-line="193" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/json/__init__.py">
+    <entry file="file://$PROJECT_DIR$/run_mcts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5640">
-          <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hearthbreaker/game_objects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="567" column="0" lean-forward="false" selection-start-line="567" selection-start-column="0" selection-end-line="567" selection-end-column="0" />
+        <state relative-caret-position="181">
+          <caret line="427" column="30" lean-forward="false" selection-start-line="427" selection-start-column="24" selection-end-line="427" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/json/encoder.py">
+    <entry file="file://$PROJECT_DIR$/hearthbreaker/engine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="441" column="0" lean-forward="false" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_games.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="64" column="59" lean-forward="false" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
+        <state relative-caret-position="125">
+          <caret line="82" column="27" lean-forward="false" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hearthbreaker/engine.py">
+    <entry file="file://$PROJECT_DIR$/run_games.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="90" column="13" lean-forward="false" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+        <state relative-caret-position="471">
+          <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1554404003431" expanded="true" signature="2213:2419" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hearthbreaker/agents/mcts_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="157">
+          <caret line="82" column="76" lean-forward="false" selection-start-line="82" selection-start-column="76" selection-end-line="82" selection-end-column="76" />
           <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <marker date="1554285925341" expanded="true" signature="264:516" ph="..." />
-            <marker date="1554285925341" expanded="true" signature="3663:3984" ph="..." />
-            <marker date="1554285925341" expanded="true" signature="7663:10157" ph="..." />
-            <marker date="1554285925341" expanded="true" signature="7939:8214" ph="..." />
-            <marker date="1554285925341" expanded="true" signature="8610:8632" ph="..." />
-            <marker date="1554285925341" expanded="true" signature="9505:9533" ph="..." />
+            <marker date="1554403971413" expanded="false" signature="0:46" ph="import ..." />
           </folding>
         </state>
       </provider>

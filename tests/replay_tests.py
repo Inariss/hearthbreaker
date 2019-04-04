@@ -9,7 +9,7 @@ from hearthbreaker.cards.heroes import Malfurion, Jaina
 from hearthbreaker.engine import Game, Deck
 
 from hearthbreaker.replay import Replay, record, playback
-from hearthbreaker.agents.basic_agents import PredictableAgent, RandomAgent
+from hearthbreaker.agents.basic_agents import PredictableAgent, RandomAgent, OpponentAgent
 from hearthbreaker.constants import CHARACTER_CLASS
 from hearthbreaker.cards import *
 import hearthbreaker.game_objects

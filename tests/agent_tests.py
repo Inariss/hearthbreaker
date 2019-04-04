@@ -5,7 +5,8 @@ from hearthbreaker.cards import GoldshireFootman, MurlocRaider, BloodfenRaptor, 
     IronfurGrizzly, MagmaRager, SilverbackPatriarch, ChillwindYeti, SenjinShieldmasta, BootyBayBodyguard, \
     FenCreeper, BoulderfistOgre, WarGolem, Shieldbearer, FlameImp, YoungPriestess, DarkIronDwarf, DireWolfAlpha, \
     Voidwalker, HarvestGolem, KnifeJuggler, ShatteredSunCleric, ArgentSquire, Doomguard, Soulfire, DefenderOfArgus, \
-    AbusiveSergeant, NerubianEgg, KeeperOfTheGrove
+    AbusiveSergeant, NerubianEgg, KeeperOfTheGrove, \
+    MudAlligator
 from hearthbreaker.cards.heroes import Guldan, Malfurion
 from hearthbreaker.engine import Game, Deck
 
