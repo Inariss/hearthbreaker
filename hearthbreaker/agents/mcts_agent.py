@@ -40,6 +40,7 @@ def play_move(game, chosen_move):
     if (game.other_player.hero.health) <= 0:
         game.other_player.hero.dead = True
         return
+
     if len(cards) > 0:
         for card in cards:
             game.play_card(card)
@@ -117,12 +118,12 @@ class GameState:
         # self.game.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
         # self.game.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
 
-        print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player hand:", player.hand, "\n\tcurrent player table:", player.minions)
-        print("\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
+        print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player life:",player.hero,"\n\tcurrent player hand:", player.hand, "\n\tcurrent player minions:", player.minions)
+        print("\topponent's life:",player.hero,"\n\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
         print("<- GET INFO ABOUT GAME <-\n")
 
         possible_cards_to_play = list(filter(lambda x: x.mana <= player.mana and x.can_use(player, player.game), cards))
-        # get all combinations of cards play (order doesn't matter): 
+        # get all combinations of cards play (order doesn't matter):
         a = list(filter(lambda x: x.mana_cost() <= player.mana, cards))
         cards_combinations = []
         for r in range(len(possible_cards_to_play)+1):
