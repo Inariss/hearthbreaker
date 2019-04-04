@@ -5,3 +5,4 @@
 htmlcov
 _build
 .vscode
+*.xml
