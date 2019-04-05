@@ -200,10 +200,13 @@ class Game(Bindable):
         self.current_player = self.players[1]
         changed_agent = False
         game_copy = None
-        while not self.game_ended:
-            # print("\nturn:",self._turns_passed)
-            # if self._turns_passed==5:
-            #     game_copy = self.copy()
+        # while not self.game_ended:
+        #     # print("\nturn:",self._turns_passed)
+        #     # if self._turns_passed==5:
+        #     #     game_copy = self.copy()
+        #     self.play_single_turn()
+
+        while self._turns_passed<5:
             self.play_single_turn()
 
             
@@ -250,10 +253,6 @@ class Game(Bindable):
             self.current_player = self.players[0]
             self.other_player = self.players[1]
             self._turns_passed += 1
-        # if self._turns_passed >= 50:
-        #     self.players[0].hero.dead = True
-        #     self.players[1].hero.dead = True
-        #     self.game_over()
         if self.current_player.max_mana < 10:
             self.current_player.max_mana += 1
 
@@ -272,12 +271,13 @@ class Game(Bindable):
         self.current_player.trigger("turn_started", self.current_player)
         self._has_turn_ended = False
 
-        if (self.current_player.hero.health) <= 0:
+        ##### in case the hero died after drawing a card from an empty deck #####
+        if self.current_player.hero.health <= 0:
             self.current_player.hero.dead = True
-            return
-        if (self.other_player.hero.health) <= 0:
+            self.game_over()
+        if self.other_player.hero.health <= 0:
             self.other_player.hero.dead = True
-            return
+            self.game_over()
 
     def game_over(self):
         self.game_ended = True
@@ -298,9 +298,6 @@ class Game(Bindable):
             minion.exhausted = False
             minion.used_windfury = False
             minion.attacks_performed = 0
-
-        # self.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
-        # self.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
 
         for aura in copy.copy(self.current_player.object_auras):
             if aura.expires:
@@ -525,7 +522,7 @@ class Player(Bindable):
             self.fatigue += 1
             self.hero.trigger("fatigue_damage", self.fatigue)
             self.hero.damage(self.fatigue, None)
-            print(self, "lost 1 point beacuse of empty deck")
+            # print(self, "lost 1 point beacuse of empty deck")
             self.hero.activate_delayed()
 
     def can_draw(self):

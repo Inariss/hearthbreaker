@@ -110,7 +110,6 @@ class RandomAgent(DoNothingAgent):
             if random.randint(0, 1) == 1 and len(player.minions) < 7:
                 player.game.play_card(card)
                 cards_played.append(card)
-        print("Cards played:", cards_played)
 
         ##### attacking with minions #####
         all_minions_who_can_attack = [minion for minion in filter(lambda minion: minion.can_attack(), player.minions)]
@@ -119,9 +118,7 @@ class RandomAgent(DoNothingAgent):
         for attacker in all_minions_who_can_attack:
             if random.randint(0, 1) == 1:
                 attacks_performed.append(attacker)
-        print("Attacks:", attacks_performed)
-        for attacker in attacks_performed:
-            attacker.attack()
+                attacker.attack()
 
         ##### remove dead minions after attacks are performed #####
         player.game.remove_dead_minions()

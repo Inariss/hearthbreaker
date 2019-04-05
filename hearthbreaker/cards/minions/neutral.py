@@ -77,6 +77,12 @@ class WarGolem(MinionCard):
     def create_minion(self, player):
         return Minion(7, 7)
 
+class WaterGolem(MinionCard):
+    def __init__(self):
+        super().__init__("Water Golem", 5, CHARACTER_CLASS.ALL, CARD_RARITY.COMMON)
+
+    def create_minion(self, player):
+        return Minion(4, 5)
 
 class MogushanWarden(MinionCard):
     def __init__(self):
@@ -452,6 +458,12 @@ class BoulderfistOgre(MinionCard):
     def create_minion(self, player):
         return Minion(6, 7)
 
+class Ogre(MinionCard):
+    def __init__(self):
+        super().__init__("Ogre", 4, CHARACTER_CLASS.ALL, CARD_RARITY.FREE)
+
+    def create_minion(self, player):
+        return Minion(4, 5)
 
 class ChillwindYeti(MinionCard):
     def __init__(self):
@@ -462,10 +474,10 @@ class ChillwindYeti(MinionCard):
 
 class HotwindJinn(MinionCard):
     def __init__(self):
-        super().__init__("Hotwind Jinn", 4, CHARACTER_CLASS.ALL, CARD_RARITY.COMMON)
+        super().__init__("Hotwind Jinn", 3, CHARACTER_CLASS.ALL, CARD_RARITY.COMMON)
 
     def create_minion(self, player):
-        return Minion(4, 5)
+        return Minion(3, 4)
 
 class CoreHound(MinionCard):
     def __init__(self):
@@ -606,6 +618,14 @@ class FenCreeper(MinionCard):
 
     def create_minion(self, player):
         return Minion(3, 6, taunt=True)
+
+
+class DesertMonster(MinionCard):
+    def __init__(self):
+        super().__init__("Desert Monster", 4, CHARACTER_CLASS.ALL, CARD_RARITY.COMMON)
+
+    def create_minion(self, player):
+        return Minion(2, 4, taunt=True)
 
 
 class VentureCoMercenary(MinionCard):

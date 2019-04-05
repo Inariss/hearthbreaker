@@ -34,13 +34,15 @@ def play_move(game, chosen_move):
     game.remove_dead_minions()
 
     cards, attacks = chosen_move
-    if (game.current_player.hero.health) <= 0:
-        game.current_player.hero.dead = True
-        return
-    if (game.other_player.hero.health) <= 0:
-        game.other_player.hero.dead = True
-        return
 
+    if game.current_player.hero.health <= 0:
+        game.current_player.hero.dead = True
+        game.game_over()
+    if game.other_player.hero.health <= 0:
+        game.other_player.hero.dead = True
+        game.game_over()
+
+    print("cards:",cards, "\t", game.current_player.hand)
     if len(cards) > 0:
         for card in cards:
             game.play_card(card)
@@ -91,9 +93,13 @@ class GameState:
     def __init__(self, game):
         self.game = game
         self.playerJustMoved = game.current_player # At the root pretend the player just moved is player 2 - player 1 has the first move
+        self.untriedMoves = self.get_moves()
         
     def clone(self):
         return GameState(self.game.copy())
+
+    def switch_players(self):
+        self.game.current_player = self
 
     def do_move(self, move):
         """ update a state by carrying out the given move.
@@ -115,11 +121,10 @@ class GameState:
 
         # remove dead minions from table
         self.game.remove_dead_minions()
-        # self.game.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
-        # self.game.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
 
-        print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player life:",player.hero,"\n\tcurrent player hand:", player.hand, "\n\tcurrent player minions:", player.minions)
-        print("\topponent's life:",player.hero,"\n\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
+        print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player:",player.hero,
+              "player mana:",player.mana,"\n\tcurrent player hand:", player.hand, "\n\tcurrent player minions:", player.minions)
+        print("\topponent's life:",opponent.hero,"player mana:",player.mana,"\n\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
         print("<- GET INFO ABOUT GAME <-\n")
 
         possible_cards_to_play = list(filter(lambda x: x.mana <= player.mana and x.can_use(player, player.game), cards))
@@ -197,7 +202,7 @@ class MCTSAgent(DoNothingAgent):
 
     def do_turn(self, player):
         self.print_info_about_turn(player)
-        state = GameState(player.game)
+        state = GameState(player.game) # wchodzi do get_moves()
         move = uct(rootstate = state, itermax = self.depth, verbose = False)
 
         print("*** AFTER UCT ***")
@@ -224,6 +229,7 @@ class Node:
         self.visits = 0
         self.untriedMoves = state.get_moves() # future child nodes
         self.playerJustMoved = state.playerJustMoved # the only part of the state that the Node needs later
+        self.state = state
         
     def uct_select_child(self):
         """ Use the UCB1 formula to select a child node. Often a constant UCTK is applied so we have
@@ -276,30 +282,32 @@ def uct(rootstate, itermax, verbose=False):
 
     for i in range(itermax):
         node = rootnode
-        state = rootstate.clone()
+        node.state = rootstate.clone()
 
-        print("Turn:", state.game._turns_passed, ", iteration:", i, "\nTried moves:", len(node.childNodes),
+        print("Turn:", node.state.game._turns_passed, ", iteration:", i, "\nTried moves:", len(node.childNodes),
             "\nuntried moves:", len(node.untriedMoves))
 
         # Select
         while node.untriedMoves == [] and node.childNodes != []:  # node is fully expanded and non-terminal
             node = node.uct_select_child()
             print("==========\nSelect - chosen move:", node.move)
-            state.do_move(node.move)
+            node.state.do_move(node.move)
+            node.state.game._start_turn()    # switches players
+            node.untriedMoves = node.state.get_moves()
             print("Select - finished selecting for move:", node.move, "\n==========")
 
         # Expand
         if node.untriedMoves != []:  # if we can expand (i.e. state/node is non-terminal)
             m = random.choice(node.untriedMoves)
             print("==========\nExpand - chosen move:", m)
-            state.do_move(m)
-            node = node.add_child(m, state)  # add child and descend tree
+            node.state.do_move(m)
+            node = node.add_child(m, node.state)  # add child and descend tree
             print("Expand - finished expanding for move:", m, "\n==========")
 
         # My rollout
         curr_player_won = 0
-        if not state.game.current_player.hero.dead and not state.game.other_player.hero.dead:
-            game_copy = state.game.copy()
+        if not node.state.game.current_player.hero.dead and not node.state.game.other_player.hero.dead:
+            game_copy = node.state.game.copy()
             game_copy.players[0].change_agent(RandomAgent())
             game_copy.players[1].change_agent(RandomAgent())
     
@@ -308,8 +316,10 @@ def uct(rootstate, itermax, verbose=False):
                 game_copy.remove_dead_minions()
                 game_copy.current_player.agent.do_turn(game_copy.current_player)
                 game_copy._end_turn()
-            curr_player_won = 0 if game_copy.current_player.hero.dead else 1
-            print("Rollout - current player won") if curr_player_won == 0 else print("Rollout - other player won")
+            # curr_player_won = 0 if game_copy.current_player.hero.dead else 1
+            curr_player_won = 0 if game_copy.players[0].hero.dead else 1
+            print(game_copy.current_player.hero, "\t", game_copy.other_player.hero)
+            print("Rollout - MCTS player won") if curr_player_won == 1 else print("Rollout - other player won")
 
         # My Backpropagate
         while node != None:  # backpropagate from the expanded node and work back to the root node
