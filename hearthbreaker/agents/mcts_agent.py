@@ -6,6 +6,9 @@ import random
 import math
 from hearthbreaker.agents.basic_agents import RandomAgent, DoNothingAgent, OpponentAgent
 
+global_depth = []
+global_nodesvisited = []
+
 def find_minion(m, ms):
     filtered_minions = list(filter(lambda x: x.key==m.key, ms)) 
     if len(filtered_minions)<1:
@@ -118,9 +121,9 @@ class GameState:
         # self.game.current_player.minions = [minion for minion in self.current_player.minions if minion.health > 0]
         # self.game.other_player.minions = [minion for minion in self.other_player.minions if minion.health > 0]
 
-        print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player life:",player.hero,"\n\tcurrent player hand:", player.hand, "\n\tcurrent player minions:", player.minions)
-        print("\topponent's life:",player.hero,"\n\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
-        print("<- GET INFO ABOUT GAME <-\n")
+        # print("\n-> GET INFO ABOUT GAME ->\n\tcurrent player life:",player.hero,"\n\tcurrent player hand:", player.hand, "\n\tcurrent player minions:", player.minions)
+        # print("\topponent's life:",player.hero,"\n\topponent's hand:",opponent.hand, "\n\topponent's minions:",opponent.minions)
+        # print("<- GET INFO ABOUT GAME <-\n")
 
         possible_cards_to_play = list(filter(lambda x: x.mana <= player.mana and x.can_use(player, player.game), cards))
         # get all combinations of cards play (order doesn't matter):
@@ -196,21 +199,21 @@ class MCTSAgent(DoNothingAgent):
         print("<-- info <--")
 
     def do_turn(self, player):
-        self.print_info_about_turn(player)
+        # self.print_info_about_turn(player)
         state = GameState(player.game)
         move = uct(rootstate = state, itermax = self.depth, verbose = False)
 
-        print("*** AFTER UCT ***")
-        print("Before playing the move:")
-        print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
+        # print("*** AFTER UCT ***")
+        # print("Before playing the move:")
+        # print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
 
-        print("---\nChosen move:", move)
+        # print("---\nChosen move:", move)
         play_move(player.game, move)
 
-        print("---\nAfter playing the move:")
-        print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
+        # print("---\nAfter playing the move:")
+        # print("\tHand:", player.hand,"\n\tMinions:", player.minions, "\n\tMana:", player.mana, "\n\tHero:", player.hero.health)
 
-        print("*********")
+        # print("*********")
 
 class Node:
     """ A node in the game tree. Note wins is always from the viewpoint of playerJustMoved.
@@ -273,28 +276,31 @@ class Node:
 
 def uct(rootstate, itermax, verbose=False):
     rootnode = Node(state=rootstate)
+    counters = []
+    visited = []
 
     for i in range(itermax):
         node = rootnode
         state = rootstate.clone()
+        visited.append(len(node.childNodes)/(len(node.untriedMoves)+len(node.childNodes))*100)
 
-        print("Turn:", state.game._turns_passed, ", iteration:", i, "\nTried moves:", len(node.childNodes),
-            "\nuntried moves:", len(node.untriedMoves))
+        # print("Turn:", state.game._turns_passed, ", iteration:", i, "\nTried moves:", len(node.childNodes),
+        #     "\nuntried moves:", len(node.untriedMoves))
 
         # Select
         while node.untriedMoves == [] and node.childNodes != []:  # node is fully expanded and non-terminal
             node = node.uct_select_child()
-            print("==========\nSelect - chosen move:", node.move)
+            # print("==========\nSelect - chosen move:", node.move)
             state.do_move(node.move)
-            print("Select - finished selecting for move:", node.move, "\n==========")
+            # print("Select - finished selecting for move:", node.move, "\n==========")
 
         # Expand
         if node.untriedMoves != []:  # if we can expand (i.e. state/node is non-terminal)
             m = random.choice(node.untriedMoves)
-            print("==========\nExpand - chosen move:", m)
+            # print("==========\nExpand - chosen move:", m)
             state.do_move(m)
             node = node.add_child(m, state)  # add child and descend tree
-            print("Expand - finished expanding for move:", m, "\n==========")
+            # print("Expand - finished expanding for move:", m, "\n==========")
 
         # My rollout
         curr_player_won = 0
@@ -309,17 +315,20 @@ def uct(rootstate, itermax, verbose=False):
                 game_copy.current_player.agent.do_turn(game_copy.current_player)
                 game_copy._end_turn()
             curr_player_won = 0 if game_copy.current_player.hero.dead else 1
-            print("Rollout - current player won") if curr_player_won == 0 else print("Rollout - other player won")
-
+            # print("Rollout - current player won") if curr_player_won == 0 else print("Rollout - other player won")
+        counter = 0 
         # My Backpropagate
         while node != None:  # backpropagate from the expanded node and work back to the root node
-            print("==========\nBackpropagation - updating node:", node)
+            # print("==========\nBackpropagation - updating node:", node)
             node.update(curr_player_won)  # state is terminal. update node with result from POV of node.playerJustMoved
-            print("Backpropagation - finished updating node:", node, "\n==========")
+            # print("Backpropagation - finished updating node:", node, "\n==========")
             node = node.parentNode
+            counter +=1
+        counters.append(counter)
 
     # Output some information about the tree - can be omitted
     if (verbose): print("Tree info:",rootnode.tree_to_string(0))
     else: print("Children of tree info:",rootnode.children_to_string())
-    
+    global_depth.append((rootstate.game._turns_passed, sum(counters)/len(counters)))
+    global_nodesvisited.append((rootstate.game._turns_passed, sum(visited)/len(visited)))
     return sorted(rootnode.childNodes, key=lambda c: c.visits)[-1].move # return the move that was most visited

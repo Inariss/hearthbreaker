@@ -35,7 +35,7 @@ class AggressiveAgent(Agent):
                 print('BEFORE ATTACK WITH MINIONS')
                 self.check_opponent_life(player)
                 print(">>> Attacking with minion:\n\tlife:", minion)
-                # minion.attack()
+                minion.attack()
                 player.game.attack_target(minion, player.game.other_player.hero)
                 attack_done = True
                 self.check_opponent_life(player)
@@ -108,7 +108,7 @@ class AggressiveAgent(Agent):
         print("--- CHOOSING TARGET ---\n--- Choosing target from list:\n---    ", end='')
         print(*targets, sep='\n---    ')
         if (len(targets)>=2):
-            target_chosen = targets[-2]
+            target_chosen = targets[-1]
         else:
             target_chosen = targets[-1]
         print("--- CHOSEN TARGET:\n---    ", target_chosen)

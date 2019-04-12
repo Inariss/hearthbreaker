@@ -28,6 +28,7 @@ class ControllingAgent(Agent):
 
         attack_done = False
         for minion in attacking_minions:
+        # for minion in attacking_minions[:int(len(attacking_minions)/4)]:
             attack_done = True
             print('BEFORE ATTACK WITH MINIONS')
             self.check_opponent_life(player)

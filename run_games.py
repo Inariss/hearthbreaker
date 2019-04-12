@@ -9,7 +9,7 @@ from hearthbreaker.constants import CHARACTER_CLASS
 from hearthbreaker.engine import Game, Deck, card_lookup
 from hearthbreaker.cards import *
 import timeit
-from hearthbreaker.agents.mcts_agent import MCTSAgent
+from hearthbreaker.agents.mcts_agent import MCTSAgent, global_depth, global_nodesvisited
 
 
 
@@ -42,13 +42,15 @@ def do_stuff():
         try:
             winner = new_game.start()
             print("Winner: ",winner)
-
-            print()
+            print("turns passed : ", new_game._turns_passed)
+           
             print("# " * 27, " GAME OVER ", " #" * 27)
             print(new_game.players[0], "has", new_game.players[0].hero.health, "life points,\t", end='')
             print(new_game.players[1], "has", new_game.players[1].hero.health, "life points")
             print(winner, 'won the game (', winner.agent, ')')
             print("# " * 61, "\n")
+            print("AVG tree depth per nr of turns", global_depth)
+            print("AVG percent of explored children", global_nodesvisited)
 
         except Exception as e:
             # print(json.dumps(new_game.__to_json__(), default=lambda o: o.__to_json__(), indent=1))
@@ -63,12 +65,13 @@ def do_stuff():
     cards = load_deck("mage3.hsdeck")
     deck1 = Deck(cards, Jaina())
     deck2 = Deck(cards, Malfurion())
-    game = Game([deck1, deck2], [MCTSAgent(5), RandomAgent()])
+    game = Game([deck1, deck2], [MCTSAgent(30), RandomAgent()])
     # game = Game([deck1, deck2], [AggressiveAgent(), RandomAgent()])
 
     # game = Game([deck1, deck2], [ControllingAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [TalkativeAgent(), RandomAgent()])
     # game = Game([deck1, deck2], [RandomAgent(), RandomAgent()])
+    
     print(timeit.timeit(play_game, 'gc.enable()', number=1))
 
 
